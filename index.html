@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍨 Traktir Jajan - Selamatkan Dompet & Kesehatanmu!</title>
+    <style>
+        /* --- BRANDING WARNA WARM ORGANIC / EARTHY CASUAL --- */
+        :root {
+            --toska-adem: #81B29A;      /* Sage Green Lembut - Aksen Sosial/UMKM */
+            --soft-pink: #E07A5F;       /* Terracotta - Warna Utama Kuliner & Hangat */
+            --off-white: #FDFBF7;       /* Warm Cream - Background Utama Super Adem di Mata */
+            --gelap: #3D405B;           /* Slate Navy - Pengganti Hitam Pekat agar Lebih Premium */
+            --putih: #FFFFFF;
+            --kuning-cerah: #F2CC8F;    /* Muted Mustard Yellow - Untuk Highlight Utama */
+            --hijau-adem: #81B29A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--gelap);
+            background-color: var(--off-white);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            background-color: var(--gelap);
+            color: var(--putih);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(61, 64, 91, 0.1);
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--kuning-cerah);
+            letter-spacing: 0.5px;
+        }
+
+        header nav a {
+            color: #E2E8F0;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 700;
+            transition: color 0.2s;
+        }
+
+        header nav a:hover {
+            color: var(--toska-adem);
+        }
+
+        .btn-nav {
+            background-color: var(--soft-pink);
+            color: var(--putih);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 800;
+            box-shadow: 0 4px 10px rgba(224, 122, 95, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .btn-nav:hover {
+            background-color: #d06d53;
+            color: var(--putih);
+        }
+
+        /* --- HERO BANNER --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8%;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1.2;
+        }
+
+        .hero-text h1 {
+            font-size: 46px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--gelap);
+        }
+
+        .hero-text h1 span {
+            color: var(--putih);
+            background-color: var(--soft-pink);
+            padding: 4px 14px;
+            border-radius: 12px;
+            display: inline-block;
+            box-shadow: 0 6px 15px rgba(224, 122, 95, 0.25);
+        }
+
+        .hero-text p {
+            font-size: 19px;
+            color: #5c5e75;
+            margin-bottom: 35px;
+            max-width: 600px;
+        }
+
+        .btn-utama {
+            background-color: var(--kuning-cerah);
+            color: var(--gelap);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 18px;
+            border-radius: 30px;
+            display: inline-block;
+            box-shadow: 0 6px 20px rgba(242, 204, 143, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-utama:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(242, 204, 143, 0.5);
+        }
+
+        .hero-image {
+            flex: 0.8;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(61, 64, 91, 0.15);
+        }
+
+        /* --- SECTION BENEFIT --- */
+        .section-benefit {
+            background-color: var(--putih);
+            padding: 80px 8%;
+            text-align: center;
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.02);
+        }
+
+        .section-title {
+            font-size: 34px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: var(--gelap);
+        }
+
+        .section-title span {
+            background-color: rgba(129, 178, 154, 0.2);
+            color: #58816c;
+            padding: 2px 12px;
+            border-radius: 10px;
+        }
+
+        .subtitle {
+            color: #72748a;
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+
+        .grid-benefit {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 30px;
+        }
+
+        .card-benefit {
+            background-color: var(--off-white);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(61, 64, 91, 0.04);
+            border: 1px solid rgba(61, 64, 91, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card-benefit:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-benefit .badge-icon {
+            font-size: 32px;
+            background: var(--putih);
+            padding: 10px;
+            border-radius: 14px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .card-benefit h3 {
+            font-size: 19px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--gelap);
+        }
+        
+        .card-benefit p {
+            color: #64667d;
+        }
+
+        /* --- SECTION TARGET PRODUK TRAKTIR --- */
+        .section-jajanan {
+            padding: 80px 8%;
+            text-align: center;
+            background-color: #F4F7F5;
+        }
+
+        .grid-jajanan {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card-jajan {
+            background-color: var(--putih);
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: left;
+            display: flex;          
+            flex-direction: column; 
+            height: 100%;           
+            box-shadow: 0 15px 35px rgba(61, 64, 91, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card-jajan:hover {
+            transform: translateY(-5px);
+        }
+
+        .jajan-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            flex-shrink: 0;         
+        }
+
+        .jajan-info {
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .jajan-info h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--gelap);
+        }
+
+        .jajan-info p {
+            color: #64667d;
+        }
+
+        /* --- SECTION LAPORAN SETELAH JAJAN (ASML IMAGE-OVERLAY STYLE) --- */
+        .section-laporan {
+            background-color: var(--putih);
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .grid-laporan {
+            display: flex;                  
+            overflow-x: auto;               
+            gap: 25px;
+            margin-top: 40px;
+            padding-bottom: 25px;           
+            scroll-snap-type: x mandatory;  
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch; 
+        }
+
+        .grid-laporan::-webkit-scrollbar {
+            height: 8px;
+        }
+        .grid-laporan::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .grid-laporan::-webkit-scrollbar-thumb {
+            background: var(--toska-adem);
+            border-radius: 10px;
+        }
+
+        .card-laporan {
+            position: relative;
+            height: 480px;
+            flex: 0 0 320px;                
+            background-color: var(--gelap);
+            border-radius: 24px;
+            overflow: hidden;
+            text-align: left;
+            scroll-snap-align: start;       
+            box-shadow: 0 15px 35px rgba(61, 64, 91, 0.1);
+        }
+
+        .laporan-img-wrapper {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .laporan-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.4s ease;
+        }
+
+        .card-laporan:hover .laporan-img {
+            transform: scale(1.04);
+        }
+
+        .laporan-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 35px 24px;
+            background: linear-gradient(to top, 
+                rgba(61, 64, 91, 0.98) 0%, 
+                rgba(61, 64, 91, 0.8) 50%, 
+                rgba(61, 64, 91, 0.3) 80%, 
+                transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 70%; 
+            pointer-events: none; 
+        }
+
+        .laporan-meta {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--kuning-cerah); 
+            margin-bottom: 8px;
+        }
+
+        .laporan-info h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--putih);
+            line-height: 1.3;
+            margin-bottom: 0px;
+            border-bottom: 3px solid var(--kuning-cerah); 
+            padding-bottom: 12px;
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--hijau-adem);
+            color: var(--putih);
+            padding: 6px 14px;
+            font-weight: 800;
+            font-size: 12px;
+            border-radius: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 5; 
+        }
+
+        /* --- SECTION QRIS --- */
+        .section-qris {
+            background-color: rgba(224, 122, 95, 0.15);
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .qris-container {
+            background-color: var(--putih);
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 45px 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(61, 64, 91, 0.06);
+        }
+        
+        .qris-container h3 {
+            color: var(--gelap);
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .qris-box {
+            width: 250px;
+            height: 250px;
+            background-color: #F4F1DE;
+            margin: 30px auto;
+            border: 2px dashed rgba(61, 64, 91, 0.3);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: #72748a;
+        }
+
+        .qris-container p.panduan {
+            font-size: 15px;
+            color: var(--gelap);
+            font-weight: 600;
+            background: rgba(242, 204, 143, 0.25);
+            padding: 15px;
+            border-radius: 16px;
+            line-height: 1.5;
+        }
+
+        /* --- POPUP MODAL INTERAKTIF --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(61, 64, 91, 0.6);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 2000; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.aktif { opacity: 1; pointer-events: auto; }
+
+        .modal-box {
+            background-color: var(--kuning-cerah);
+            padding: 45px 40px; border-radius: 24px;
+            max-width: 450px; text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transform: scale(0.8); transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.aktif .modal-box { transform: scale(1); }
+        .modal-box h3 { font-size: 26px; font-weight: 900; margin-bottom: 15px; color: var(--gelap); }
+        .modal-box p { color: #5c5e75; margin-bottom: 25px; }
+        
+        .btn-tutup {
+            background-color: var(--soft-pink); color: var(--putih);
+            padding: 12px 35px; border: none;
+            font-weight: 800; border-radius: 30px; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(224, 122, 95, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .btn-tutup:hover {
+            background-color: #d06d53;
+            transform: translateY(-2px);
+        }
+
+        /* --- KUSTOM TOMBOL KONTROL MUSIK POJOK BAWAH --- */
+        .kontrol-musik {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 9999;
+            background-color: var(--gelap);
+            color: var(--putih);
+            border: none;
+            border-radius: 50px;
+            padding: 14px 24px;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(61, 64, 91, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .kontrol-musik:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(61, 64, 91, 0.4);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--gelap);
+            color: #b3b5c6;
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 15px;
+            border-top: 5px solid var(--soft-pink);
+        }
+        footer strong { color: var(--putih); }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding: 40px 5%; }
+            .hero-text h1 { font-size: 32px; }
+            header { flex-direction: column; gap: 15px; padding: 20px 15px; }
+            header nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+            header nav a { margin: 0 10px; }
+            .kontrol-musik { bottom: 15px; right: 15px; padding: 10px 18px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="audioLatar" loop>
+        <source src="musik/lagu.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="kontrol-musik" id="btnMusik">
+        <span id="ikonMusik">🎵</span> <span id="teksMusik">Putar Musik</span>
+    </button>
+
+    <header>
+        <div class="logo">🍨 Traktir Jajan</div>
+        <nav>
+            <a href="#beranda">Beranda</a>
+            <a href="#manfaat">Manfaat</a>
+            <a href="#menu">Target Jajanan</a>
+            <a href="#laporan">Laporan Belanja</a>
+            <a href="#qris" class="btn-nav">SCAN QRIS</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="beranda">
+        <div class="hero-text">
+            <h1>Uang Juragan Dibuang Percuma? Mending <span>Traktir Jajan!</span></h1>
+            <p>Ekonomi lagi sulit, daripada duit juragan habis kaga jelas buat judol, slot, hiburan malam, checkout barang gaib atau top-up game penguras emosi, 
+            mending alihkan dananya buat melariskan UMKM sekitar kita. Selain itu Juragan juga bisa merekomendasikan UMKM favorit Juragan buat kita beli!</p>
+            <button class="btn-utama" id="tombolHero">SELAMATKAN DUIT GUA!</button>
+        </div>
+        <div class="hero-image">
+            <img src="aset/jajan/herohappy.jpg" alt="Happy People">
+        </div>
+    </section>
+
+    <section class="section-benefit" id="manfaat">
+        <h2 class="section-title">Apa yang <span>Juragan Dapat?</span></h2>
+        <p class="subtitle">Bukan investasi bodong, ini benefit nyata jalur langit, fisik, dan mental.</p>
+        
+        <div class="grid-benefit">
+            <div class="card-benefit">
+                <div class="badge-icon">🛡️</div>
+                <h3>Penyelamat Dompet</h3>
+                <p>Menyelamatkan juragan-juragan sekalian dari khilaf belanja hal-hal percuma bin nirfaedah di e-commerce, main slot, judol.</p>
+            </div>
+            <div class="card-benefit">
+                <div class="badge-icon">🩺</div>
+                <h3>Detoks Diabetes & Kolesterol</h3>
+                <p>Jatah anggaran jajan manis dan junk food agan dialihkan ke kami. Otomatis konsumsi gula dan lemak agan terpangkas hari ini!</p>
+            </div>
+            <div class="card-benefit">
+                <div class="badge-icon">🧠</div>
+                <h3>Ketenangan Jiwa</h3>
+                <p>Merasa jauh lebih tenang, damai, dan dapet hormon bahagia (warm-glow) setelah ngeliat orang lain kenyang berkat agan.</p>
+            </div>
+            <div class="card-benefit">
+                <div class="badge-icon">📸</div>
+                <h3>Transparansi Mutlak</h3>
+                <p>Doa baik yang tulus serta laporan berupa foto produk asli yang telah kami belanjakan di UMKM.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-jajanan" id="menu">
+        <h2 class="section-title">Target <span>Produk Traktir</span></h2>
+        <p class="subtitle">Inilah deretan jajanan yang siap juragan beli dagangannya.</p>
+        
+        <div class="grid-jajanan">
+            <div class="card-jajan">
+                <img src="aset/jajan/donat.jpg" alt="Donat" class="jajan-img">
+                <div class="jajan-info">
+                    <h3>🍩 Donat </h3>
+                    <p>Donat empuk legendaris dengan lapisan cokelat tebal dan taburan mesis yang melimpah ruah sampai tumpah-tumpah. Sekali gigit, langsung nostalgia dan bikin lupa sama masalah cicilan!</p>
+                </div>
+            </div>
+            <div class="card-jajan">
+                <img src="aset/jajan/martabak.jpg" alt="Martabak" class="jajan-img">
+                <div class="jajan-info">
+                    <h3>🥞 Martabak </h3>
+                    <p>Adonan manis tebal dengan margarin melimpah, keju, dan taburan cokelat. Ada juga martabak telur yang rasanya nggak kalah enak dan bisa dimakan pakai nasi .</p>
+                </div>
+            </div>
+            <div class="card-jajan">
+                <img src="aset/jajan/miayam.jpg" alt="Mi Ayam" class="jajan-img">
+                <div class="jajan-info">
+                    <h3>🍜 Mi Ayam </h3>
+                    <p>Mie kenyal racikan lokal dengan potongan daging ayam kecap melimpah and siraman kuah kaldu hangat gurih.</p>
+                </div>
+            </div>
+            <div class="card-jajan">
+                <img src="aset/jajan/bakso.jpg" alt="Bakso" class="jajan-img">
+                <div class="jajan-info">
+                    <h3>🧆 Bakso </h3>
+                    <p>Bola-bola daging sapi urat asli bertekstur mantap yang kalau digigit langsung meledak di mulut.</p>
+                </div>
+            </div>
+            <div class="card-jajan">
+                <img src="aset/jajan/baksobakar.jpg" alt="Bakso Bakar" class="jajan-img">
+                <div class="jajan-info">
+                    <h3>🍢 Bakso Bakar </h3>
+                    <p>Ditusuk ala sate, dibakar dengan olesan kecap manis dan gurih beraroma asap menggoda yang langsung bikin laper.</p>
+                </div>
+            </div>
+            <div class="card-jajan">
+                <img src="aset/jajan/gorengan.jpg" alt="Gorengan" class="jajan-img">
+                <div class="jajan-info">
+                    <h3>🍟 Gorengan </h3>
+                    <p>Tempe mendoan, tahu isi, bakwan garing kriuk-kriuk. Menu legendaris pemersatu segala bangsa.</p>
+                </div>
+            </div>
+            <div class="card-jajan">
+                <img src="aset/jajan/lainnya.jpg" alt="Lainnya" class="jajan-img">
+                <div class="jajan-info">
+                    <h3>🍱 Lainnya </h3>
+                    <p>Jajan lainnya , termasuk minuman, entertainment dan kebutuhan primer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-laporan" id="laporan">
+        <h2 class="section-title">(Contoh) Laporan <span>Belanja Juragan</span></h2>
+        <p class="subtitle"> Bukti nyata eksekusi di lapangan. Duit juragan beneran jadi senyuman!</p>
+        
+        <div class="grid-laporan">
+            <div class="card-laporan">
+                <div class="laporan-img-wrapper">
+                    <span class="status-badge">DONE TERBELI</span>
+                    <img src="aset/laporan/belibakso.jpg" alt="Bukti Bakso" class="laporan-img">
+                </div>
+                <div class="laporan-info">
+                    <div class="laporan-meta">📅 8 Juli 2026 | Jam 16:30 WIB</div>
+                    <h3>Beli 2 Porsi Bakso Pak Joko</h3>
+                </div>
+            </div>
+
+            <div class="card-laporan">
+                <div class="laporan-img-wrapper">
+                    <span class="status-badge">DONE TERBELI</span>
+                    <img src="aset/laporan/beligorengan.jpg" alt="Bukti Gorengan" class="laporan-img">
+                </div>
+                <div class="laporan-info">
+                    <div class="laporan-meta">📅 5 Juli 2026 | Jam 17:00 WIB</div>
+                    <h3>Beli 15 Biji Gorengan Cak Ndut</h3>
+                </div>
+            </div>
+
+            <div class="card-laporan">
+                <div class="laporan-img-wrapper">
+                    <span class="status-badge">DONE TERBELI</span>
+                    <img src="aset/laporan/belimiayam.jpg" alt="Bukti Mi Ayam" class="laporan-img">
+                </div>
+                <div class="laporan-info">
+                    <div class="laporan-meta">📅 3 Juli 2026 | Jam 13:00 WIB</div>
+                    <h3>Beli 3 Mangkok Mi Ayam Wonogiri</h3>
+                </div>
+            </div>
+
+            <div class="card-laporan">
+                <div class="laporan-img-wrapper">
+                    <span class="status-badge">DONE TERBELI</span>
+                    <img src="aset/laporan/belicilok.jpg" alt="Bukti Cilok" class="laporan-img">
+                </div>
+                <div class="laporan-info">
+                    <div class="laporan-meta">📅 1 Juli 2026 | Jam 19:15 WIB</div>
+                    <h3>Beli Habis Cilok Kuah Pedas Kang Asep</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-qris" id="qris">
+        <h2 class="section-title">Markas <span>QRIS Juragan</span></h2>
+        <p class="subtitle">Mulai aksi penyelamatan finansial dan bantu UMKM di sini.</p>
+        
+        <div class="qris-container">
+            <h3>Scan Di Sini, Gan! 💸</h3>
+            <div class="qris-box">
+                <span>[ Taruh Gambar QRIS agan Disini ]</span>
+            </div>
+            <p class="panduan">
+                Kaga ada minimal nominal, Juragan! Mau traktir satu biji gorengan (seribu perak) atau beli gerobak baksonya sekalian, yang penting keikhlasan Juragan buat muter ekonomi UMKM. Jangan lupa screenshot bukti transfernya ya!
+            </p>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="popupModal">
+        <div class="modal-box">
+            <h3>Keputusan Cerdas, Juragan! 😬 </h3>
+            <p>Yuk scroll ke paling bawah halaman ini, siapin e-wallet atau mobile banking agan, dan mari kita berantas belanjaan percuma demi perut rakyat yang kenyang!</p>
+            <button class="btn-tutup" id="tombolTutup">GAS SEKARANG!</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Dibuat dengan penuh rasa lapar oleh <strong>Tim Traktir Jajan</strong></p>
+        <p>© 2026 - Gerakan Selamatkan Dompet Juragan & UMKM</p>
+    </footer>
+
+    <script>
+        // Logika Modal
+        const tombolBuka = document.getElementById('tombolHero');
+        const tombolTutup = document.getElementById('tombolTutup');
+        const modal = document.getElementById('popupModal');
+
+        tombolBuka.addEventListener('click', function() {
+            modal.classList.add('aktif');
+        });
+
+        tombolTutup.addEventListener('click', function() {
+            modal.classList.remove('aktif');
+            document.getElementById('qris').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Logika Kontrol Musik Manual
+        const audio = document.getElementById('audioLatar');
+        const btnMusik = document.getElementById('btnMusik');
+        const ikonMusik = document.getElementById('ikonMusik');
+        const teksMusik = document.getElementById('teksMusik');
+
+        btnMusik.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                ikonMusik.textContent = '⏸️';
+                teksMusik.textContent = 'Jeda Musik';
+            } else {
+                audio.pause();
+                ikonMusik.textContent = '🎵';
+                teksMusik.textContent = 'Putar Musik';
+            }
+        });
+    </script>
+
+</body>
+</html>
